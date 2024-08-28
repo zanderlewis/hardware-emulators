@@ -76,4 +76,6 @@ NOTE: The RAM emulator is not meant to be run as a standalone program. It is mea
 
 ## Motherboard
 [motherboard.py](motherboard.py)
+
+### Example Program
 NOTE: The Motherboard emulator is not meant to be run as a standalone program. It is meant to be used in conjunction with the CPU, GPU, and RAM emulators.
