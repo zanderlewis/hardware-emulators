@@ -121,7 +121,7 @@ class GPU:
         """Load a program into GPU memory."""
         self.memory.load_program(program)
     
-    def render(self, title="Virtual GPU", render_type="image", window_size=(480, 270)):
+    def render(self, title="Virtual GPU", render_type="image", window_size=(480, 270), save=False):
         """Render the GPU's display."""
         if render_type == "terminal":
             # Determine the width of the framebuffer
@@ -141,6 +141,8 @@ class GPU:
             import matplotlib.pyplot as plt
             plt.imshow(self.framebuffer)
             plt.show()
+            if save:
+                plt.imsave("gpu_output.png", self.framebuffer)
         elif render_type == "return":
             return self.framebuffer
         elif render_type == "window":
