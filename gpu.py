@@ -1,10 +1,11 @@
 import numpy as np
 from concurrent.futures import ThreadPoolExecutor
+from ram import RAM
 
 class GPU:
     def __init__(self, num_cores=8, memory=1024, bits=16, frame_buffer=64, debug=False):
         self.num_cores = num_cores
-        self.memory = np.zeros(memory)  # Simulated memory
+        self.memory = RAM(memory)  # Memory
         self.framebuffer = np.zeros((frame_buffer, frame_buffer, 3), dtype=np.uint8)  # RGB frame buffer
         self.registers = np.zeros((num_cores, bits))  # no. of cores x no. of bits
         self.running = True
@@ -24,7 +25,7 @@ class GPU:
     def fetch(self, core_id):
         """Fetch the next instruction for a given core."""
         pc = int(self.registers[core_id][15])  # Program Counter is stored in the last register
-        opcode = int(self.memory[pc])
+        opcode = self.memory.read(pc)
         self.registers[core_id][15] += 1  # Increment Program Counter
         return opcode
 
@@ -118,7 +119,28 @@ class GPU:
 
     def load_program(self, program):
         """Load a program into GPU memory."""
-        self.memory[:len(program)] = program
+        self.memory.load_program(program)
+    
+    def render(self, render_type="image"):
+        """Render the GPU's display."""
+        if render_type == "terminal":
+            # Determine the width of the framebuffer
+            width = len(self.framebuffer[0])
+            
+            # Print the top border
+            print("█" + "█" * width + "█")
+            
+            # Print each line of the framebuffer with side borders
+            for row in self.framebuffer:
+                row_str = "".join("█" if pixel.any() else " " for pixel in row)
+                print("█" + row_str + "█")
+            
+            # Print the bottom border
+            print("█" + "█" * width + "█")
+        elif render_type == "image":
+            import matplotlib.pyplot as plt
+            plt.imshow(self.framebuffer)
+            plt.show()
 
 
 if __name__ == "__main__":

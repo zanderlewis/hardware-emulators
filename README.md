@@ -1,7 +1,8 @@
 # Hardware Emulators
-This repository contains emulators for various hardware components.
+This repository contains emulators for various hardware components. It also contains a motherboard emulator that combines the CPU, GPU, and RAM emulators. This can be run with [computer.py](computer.py) as a virtual computer.
 
 ## CPU
+[cpu.py](cpu.py)
 ### Example Program
 ```python
 # Program to add two numbers
@@ -22,6 +23,7 @@ print(f"Sum: {cpu.registers[0]}")
 ```
 
 ## GPU
+[gpu.py](gpu.py)
 ### Example Program
 ```python
 # Program to draw a square outline
@@ -66,3 +68,12 @@ import matplotlib.pyplot as plt
 # Download the image
 plt.imsave("gpu_output.png", gpu.framebuffer)
 ```
+
+## RAM
+[ram.py](ram.py)
+### Example Program
+NOTE: The RAM emulator is not meant to be run as a standalone program. It is meant to be used in conjunction with the CPU emulator.
+
+## Motherboard
+[motherboard.py](motherboard.py)
+NOTE: The Motherboard emulator is not meant to be run as a standalone program. It is meant to be used in conjunction with the CPU, GPU, and RAM emulators.

@@ -1,9 +1,11 @@
+from ram import RAM
+
 class CPU:
     def __init__(self, bits:int=16, memory:int=512, debug:bool=False):
         # 16 registers, 512 bytes of memory, and a stack
         self.registers = [0] * bits  # Registers (R0-R15 if 16-bit)
         self.pc = 0  # Program Counter
-        self.memory = [0] * memory  # Memory (512 bytes if memory is 512)
+        self.memory = RAM(memory)  # Memory
         self.stack = []  # Stack for PUSH and POP
         self.running = True
         self.debug_mode = debug
@@ -32,7 +34,7 @@ class CPU:
     def fetch(self):
         """Fetch the next instruction from memory."""
         if self.pc < len(self.memory):
-            opcode = self.memory[self.pc]
+            opcode = self.memory.read(self.pc)
             self.pc += 1
             return opcode
         else:
@@ -202,7 +204,7 @@ class CPU:
 
     def load_program(self, program):
         """Load a program into memory."""
-        self.memory[:len(program)] = program
+        self.memory.load_program(program)
 
 
 if __name__ == "__main__":
