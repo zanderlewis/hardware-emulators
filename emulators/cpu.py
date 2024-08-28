@@ -9,6 +9,7 @@ class CPU:
         self.stack = []  # Stack for PUSH and POP
         self.running = True
         self.debug_mode = debug
+        self.bits = bits
 
         # Instructions (opcode to function mapping)
         self.instructions = {

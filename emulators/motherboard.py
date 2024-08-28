@@ -16,6 +16,8 @@ class Motherboard:
         self.ssd = SSD(debug=debug) if ssd else None
         self.network_card = NetworkCard(debug=debug) if network else None
         self.clock = Clock()
+        self.gpu_memory = gpu_memory
+        self.cpu_memory = ram_size
 
     def load_program(self, program, type="cpu"):
         """Load a program into the CPU's or GPU's memory."""
@@ -75,3 +77,17 @@ class Motherboard:
     
     def set_timezone(self, timezone):
         self.clock.set_timezone(timezone)
+    
+    def specs(self):
+        print("Virtual Hardware Specifications\n=============================\n")
+        print(f"CPU:\n====\n{self.cpu.bits}-bit\nRAM: {self.cpu_memory} bytes\n")
+        print(f"GPU:\n====\n{self.gpu.bits}-bit\nMemory: {self.gpu_memory} bytes\nFrame Buffer: {self.gpu.frame_buffer} bytes\nCores: {self.gpu.num_cores}\n")
+        print(f"Sound Card:\n===========\nBuffer Size: {self.sound_card.buffer_size} bytes\nChannels: {self.sound_card.channels}\nBit Depth: {self.sound_card.bit_depth}\nSample Rate: {self.sound_card.sample_rate}\n")
+        if self.hdd:
+            print(f"HDD:\n====\nSize: {self.hdd.size} bytes\n")
+        if self.ssd:
+            print(f"SSD:\n====\nSize: {self.ssd.size} bytes\n")
+        if self.network_card:
+            print(f"Network Card:\n=============\nHost: {self.network_card.host}\nPort: {self.network_card.port}\n")
+        print(f"System Specifications:\n======================\n")
+        print(f"Timezone: {self.clock.timezone}\n")

@@ -10,6 +10,8 @@ class GPU:
         self.registers = np.zeros((num_cores, bits))  # no. of cores x no. of bits
         self.running = True
         self.debug_mode = debug
+        self.bits = bits
+        self.frame_buffer = frame_buffer
         
         # Instructions mapped to their corresponding methods
         self.instructions = {
