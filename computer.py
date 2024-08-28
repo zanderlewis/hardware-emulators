@@ -1,4 +1,4 @@
-from motherboard import Motherboard
+from emulators.motherboard import Motherboard
 
 if __name__ == "__main__":
     # Sample program that finds the sum of two numbers

@@ -5,16 +5,16 @@ This repository contains emulators for various hardware components. It also cont
 - [Hardware Emulators](#hardware-emulators)
   - [Table of Contents](#table-of-contents)
   - [CPU](#cpu)
-    - [Example Program](#example-program)
   - [GPU](#gpu)
-    - [Example Program](#example-program-1)
   - [RAM](#ram)
-    - [Example Program](#example-program-2)
   - [Motherboard](#motherboard)
-    - [Example Program](#example-program-3)
+  - [Sound Card](#sound-card)
+  - [Network Card](#network-card)
+  - [HDD](#hdd)
+  - [SSD](#ssd)
 
 ## CPU
-[cpu.py](cpu.py)
+[cpu.py](emulators/cpu.py)
 ### Example Program
 ```python
 # Program to add two numbers
@@ -35,7 +35,7 @@ print(f"Sum: {cpu.registers[0]}")
 ```
 
 ## GPU
-[gpu.py](gpu.py)
+[gpu.py](emulators/gpu.py)
 ### Example Program
 ```python
 # Program to draw a square outline
@@ -82,12 +82,36 @@ plt.imsave("gpu_output.png", gpu.framebuffer)
 ```
 
 ## RAM
-[ram.py](ram.py)
+[ram.py](emulators/ram.py)
 ### Example Program
 NOTE: The RAM emulator is not meant to be run as a standalone program. It is meant to be used in conjunction with the CPU emulator.
 
 ## Motherboard
-[motherboard.py](motherboard.py)
+[motherboard.py](emulators/motherboard.py)
 
 ### Example Program
 NOTE: The Motherboard emulator is not meant to be run as a standalone program. It is meant to be used in conjunction with the CPU, GPU, and RAM emulators.
+
+## Sound Card
+[sound_card.py](emulators/sound_card.py)
+
+### Example Program
+NOTE: The Sound Card emulator is not meant to be run as a standalone program. It is meant to be used in conjunction with the Motherboard emulator.
+
+## Network Card
+[network_card.py](emulators/network_card.py)
+
+### Example Program
+NOTE: The Network Card emulator is not meant to be run as a standalone program. It is meant to be used in conjunction with the Motherboard emulator.
+
+## HDD
+[hdd.py](emulators/hdd.py)
+
+### Example Program
+NOTE: The HDD emulator is not meant to be run as a standalone program. It is meant to be used in conjunction with the Motherboard emulator.
+
+## SSD
+[ssd.py](emulators/ssd.py)
+
+### Example Program
+NOTE: The SSD emulator is not meant to be run as a standalone program. It is meant to be used in conjunction with the Motherboard emulator.
