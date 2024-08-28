@@ -1,7 +1,8 @@
-# cpu-emulator
- A CPU emulator written in python.
+# Hardware Emulators
+This repository contains emulators for various hardware components.
 
-## Example Program
+## CPU
+### Example Program
 ```python
 # Program to add two numbers
 program = [
@@ -19,3 +20,7 @@ cpu.run()
 # Print the sum of the two numbers
 print(f"Sum: {cpu.registers[0]}")
 ```
+
+## GPU
+### Example Program
+```python
