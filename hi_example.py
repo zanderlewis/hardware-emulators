@@ -39,6 +39,7 @@ display_hi = [
 
 def main():
     motherboard = Motherboard()
+    print(motherboard.get_time())
     motherboard.load_program(display_hi, type="gpu")
     motherboard.run(type="gpu")
     motherboard.render(render_type="window")

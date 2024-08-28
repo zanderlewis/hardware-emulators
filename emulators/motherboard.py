@@ -4,6 +4,7 @@ from .sound_card import SoundCard
 from .hdd import HDD
 from .ssd import SSD
 from .network_card import NetworkCard
+from .clock import Clock
 
 class Motherboard:
     def __init__(self, cpu_bits: int = 16, ram_size: int = 512, gpu_memory: int = 1024, frame_buffer: int = 64, sound_buffer: int = 1024, debug: bool = False, hdd: bool = True, ssd: bool = True, network: bool = True):
@@ -14,6 +15,7 @@ class Motherboard:
         self.hdd = HDD(debug=debug) if hdd else None
         self.ssd = SSD(debug=debug) if ssd else None
         self.network_card = NetworkCard(debug=debug) if network else None
+        self.clock = Clock()
 
     def load_program(self, program, type="cpu"):
         """Load a program into the CPU's or GPU's memory."""
@@ -64,3 +66,12 @@ class Motherboard:
 
     def close_network_card(self):
         self.network_card.close()
+    
+    def get_time(self):
+        return self.clock.get_time()
+    
+    def get_timezone(self):
+        self.clock.get_timezone()
+    
+    def set_timezone(self, timezone):
+        self.clock.set_timezone(timezone)
