@@ -121,7 +121,7 @@ class GPU:
         """Load a program into GPU memory."""
         self.memory.load_program(program)
     
-    def render(self, render_type="image"):
+    def render(self, title="Virtual GPU", render_type="image", window_size=(480, 270)):
         """Render the GPU's display."""
         if render_type == "terminal":
             # Determine the width of the framebuffer
@@ -141,6 +141,26 @@ class GPU:
             import matplotlib.pyplot as plt
             plt.imshow(self.framebuffer)
             plt.show()
+        elif render_type == "return":
+            return self.framebuffer
+        elif render_type == "window":
+            import pygame
+            pygame.init()
+            screen = pygame.display.set_mode(window_size)
+            pygame.display.set_caption(title)
+            clock = pygame.time.Clock()
+            running = True
+            while running:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        running = False
+                screen.fill((0, 0, 0))
+                for y, row in enumerate(self.framebuffer):
+                    for x, pixel in enumerate(row):
+                        pygame.draw.rect(screen, pixel, (x, y, 1, 1))
+                pygame.display.flip()
+                clock.tick(60)
+            pygame.quit()
 
 
 if __name__ == "__main__":

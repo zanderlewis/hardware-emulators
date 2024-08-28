@@ -29,9 +29,9 @@ class Motherboard:
         elif type == "gpu":
             self.gpu.run()
 
-    def render(self):
+    def render(self, title="Virtual GPU", render_type="terminal", window_size=(480, 270)):
         """Render the GPU's framebuffer."""
-        self.gpu.render()
+        self.gpu.render(title, render_type=render_type, window_size=window_size)
 
     def play_sound(self, sound_data):
         """Play sound using the sound card."""
