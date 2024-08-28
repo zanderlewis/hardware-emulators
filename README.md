@@ -1,6 +1,18 @@
 # Hardware Emulators
 This repository contains emulators for various hardware components. It also contains a motherboard emulator that combines the CPU, GPU, and RAM emulators. This can be run with [computer.py](computer.py) as a virtual computer.
 
+## Table of Contents
+- [Hardware Emulators](#hardware-emulators)
+  - [Table of Contents](#table-of-contents)
+  - [CPU](#cpu)
+    - [Example Program](#example-program)
+  - [GPU](#gpu)
+    - [Example Program](#example-program-1)
+  - [RAM](#ram)
+    - [Example Program](#example-program-2)
+  - [Motherboard](#motherboard)
+    - [Example Program](#example-program-3)
+
 ## CPU
 [cpu.py](cpu.py)
 ### Example Program
