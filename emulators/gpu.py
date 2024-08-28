@@ -1,6 +1,6 @@
 import numpy as np
 from concurrent.futures import ThreadPoolExecutor
-from ram import RAM
+from .ram import RAM
 
 class GPU:
     def __init__(self, num_cores=8, memory=1024, bits=16, frame_buffer=64, debug=False):

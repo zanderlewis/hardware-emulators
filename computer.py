@@ -1,5 +1,7 @@
 from emulators.motherboard import Motherboard
 
+network = False
+
 if __name__ == "__main__":
     # Sample program that finds the sum of two numbers
     cpu_program = [
@@ -127,13 +129,14 @@ if __name__ == "__main__":
     # Format the SSD
     motherboard.format_ssd()
 
-    # Example of sending data over the network
-    data_to_send = b"Hello, Network!"
-    motherboard.send_network_data(data_to_send, '127.0.0.1', 8081)
+    if network:
+        # Example of sending data over the network
+        data_to_send = b"Hello, Network!"
+        motherboard.send_network_data(data_to_send, '127.0.0.1', 8081)
 
-    # Example of receiving data from the network
-    received_data = motherboard.receive_network_data()
-    print(f"Received data: {received_data.decode()}")
+        # Example of receiving data from the network
+        received_data = motherboard.receive_network_data()
+        print(f"Received data: {received_data.decode()}")
 
-    # Close the network card
-    motherboard.close_network_card()
+        # Close the network card
+        motherboard.close_network_card()

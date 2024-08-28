@@ -1,4 +1,4 @@
-from ram import RAM
+from .ram import RAM
 
 class CPU:
     def __init__(self, bits:int=16, memory:int=512, debug:bool=False):
