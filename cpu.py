@@ -1,9 +1,9 @@
 class CPU:
-    def __init__(self, debug=False):
-        # 8-bit registers
-        self.registers = [0] * 16  # Registers R0-R15
+    def __init__(self, bits:int=16, memory:int=512, debug:bool=False):
+        # 16 registers, 512 bytes of memory, and a stack
+        self.registers = [0] * bits  # Registers (R0-R15 if 16-bit)
         self.pc = 0  # Program Counter
-        self.memory = [0] * 512  # Memory (512 bytes)
+        self.memory = [0] * memory  # Memory (512 bytes if memory is 512)
         self.stack = []  # Stack for PUSH and POP
         self.running = True
         self.debug_mode = debug
