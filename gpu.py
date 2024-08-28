@@ -121,44 +121,45 @@ class GPU:
         self.memory[:len(program)] = program
 
 
-# Sample GPU program to draw a square outline
-program = [
-    # Draw top side of the square
-    0x06, 10, 10, 255, 255, 255,  # Draw white pixel at (10, 10)
-    0x06, 11, 10, 255, 255, 255,  # Draw white pixel at (11, 10)
-    0x06, 12, 10, 255, 255, 255,  # Draw white pixel at (12, 10)
-    0x06, 13, 10, 255, 255, 255,  # Draw white pixel at (13, 10)
-    0x06, 14, 10, 255, 255, 255,  # Draw white pixel at (14, 10)
+if __name__ == "__main__":
+    # Sample GPU program to draw a square outline
+    program = [
+        # Draw top side of the square
+        0x06, 10, 10, 255, 255, 255,  # Draw white pixel at (10, 10)
+        0x06, 11, 10, 255, 255, 255,  # Draw white pixel at (11, 10)
+        0x06, 12, 10, 255, 255, 255,  # Draw white pixel at (12, 10)
+        0x06, 13, 10, 255, 255, 255,  # Draw white pixel at (13, 10)
+        0x06, 14, 10, 255, 255, 255,  # Draw white pixel at (14, 10)
 
-    # Draw bottom side of the square
-    0x06, 10, 14, 255, 255, 255,  # Draw white pixel at (10, 14)
-    0x06, 11, 14, 255, 255, 255,  # Draw white pixel at (11, 14)
-    0x06, 12, 14, 255, 255, 255,  # Draw white pixel at (12, 14)
-    0x06, 13, 14, 255, 255, 255,  # Draw white pixel at (13, 14)
-    0x06, 14, 14, 255, 255, 255,  # Draw white pixel at (14, 14)
+        # Draw bottom side of the square
+        0x06, 10, 14, 255, 255, 255,  # Draw white pixel at (10, 14)
+        0x06, 11, 14, 255, 255, 255,  # Draw white pixel at (11, 14)
+        0x06, 12, 14, 255, 255, 255,  # Draw white pixel at (12, 14)
+        0x06, 13, 14, 255, 255, 255,  # Draw white pixel at (13, 14)
+        0x06, 14, 14, 255, 255, 255,  # Draw white pixel at (14, 14)
 
-    # Draw left side of the square
-    0x06, 10, 11, 255, 255, 255,  # Draw white pixel at (10, 11)
-    0x06, 10, 12, 255, 255, 255,  # Draw white pixel at (10, 12)
-    0x06, 10, 13, 255, 255, 255,  # Draw white pixel at (10, 13)
+        # Draw left side of the square
+        0x06, 10, 11, 255, 255, 255,  # Draw white pixel at (10, 11)
+        0x06, 10, 12, 255, 255, 255,  # Draw white pixel at (10, 12)
+        0x06, 10, 13, 255, 255, 255,  # Draw white pixel at (10, 13)
 
-    # Draw right side of the square
-    0x06, 14, 11, 255, 255, 255,  # Draw white pixel at (14, 11)
-    0x06, 14, 12, 255, 255, 255,  # Draw white pixel at (14, 12)
-    0x06, 14, 13, 255, 255, 255,  # Draw white pixel at (14, 13)
+        # Draw right side of the square
+        0x06, 14, 11, 255, 255, 255,  # Draw white pixel at (14, 11)
+        0x06, 14, 12, 255, 255, 255,  # Draw white pixel at (14, 12)
+        0x06, 14, 13, 255, 255, 255,  # Draw white pixel at (14, 13)
 
-    0xFF                          # Halt
-]
+        0xFF                          # Halt
+    ]
 
-# Initialize GPU and load program into memory
-gpu = GPU()
-gpu.load_program(program)
+    # Initialize GPU and load program into memory
+    gpu = GPU()
+    gpu.load_program(program)
 
-# Run the GPU
-gpu.run()
+    # Run the GPU
+    gpu.run()
 
-# Display the pixels
-import matplotlib.pyplot as plt
+    # Display the pixels
+    import matplotlib.pyplot as plt
 
-# Download the image
-plt.imsave("gpu_output.png", gpu.framebuffer)
+    # Download the image
+    plt.imsave("gpu_output.png", gpu.framebuffer)
