@@ -50,7 +50,7 @@ program = [
     0x06, 14, 12, 255, 255, 255,  # Draw white pixel at (14, 12)
     0x06, 14, 13, 255, 255, 255,  # Draw white pixel at (14, 13)
 
-    0xFF                        # Halt
+    0xFF                          # Halt
 ]
 
 # Initialize GPU and load program into memory
